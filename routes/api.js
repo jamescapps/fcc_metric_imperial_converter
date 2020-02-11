@@ -19,13 +19,18 @@ module.exports = function (app) {
      .get(function (req, res){
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
-      var initUnit = convertHandler.getUnit(input);
-      var returnNum = convertHandler.convert(initNum, initUnit);
-      var returnUnit = convertHandler.getReturnUnit(initUnit);
-      var spelledUnit = convertHandler.spellOutUnit(returnUnit)
-      var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit, spelledUnit);
-     
-      res.json({initNum: initNum, initUnit: initUnit, returnNum: returnNum, returnUnit: returnUnit, string: toString})
+      //var initUnit = convertHandler.getUnit(input);
+      //var returnNum = convertHandler.convert(initNum, initUnit);
+      //var returnUnit = convertHandler.getReturnUnit(initUnit);
+      //var spelledUnit = convertHandler.spellOutUnit(returnUnit)
+      //var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit, spelledUnit);
+      
+      console.log(input)
+      console.log(initNum)
+      //console.log(initUnit)
+
+
+      //res.json({initNum: initNum, initUnit: initUnit, returnNum: returnNum, returnUnit: returnUnit, string: toString})
     });
     
 };
