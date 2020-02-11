@@ -14,20 +14,22 @@ function ConvertHandler() {
     if (result == null) {
       result = 1
     } */
-    //Convert input to lower case, split at letters, make sure value is a number, a decimal or division.
+    //Convert input to lower case, split at letters, make sure value is a number, a decimal or division and that division is not first character.
     var unitNum = input.toLowerCase().split(/[a-z]/)
     var divCheckInput1 = unitNum[0].split('')
-    if (isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1) {
+    if(unitNum[0] === "") {
+      result = 1
+    } else if (isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1) {
       result = "invalid number"
     } else if (divCheckInput1[0].indexOf('/') == 0) {
       result = "invalid number"
     } else {
-      result = unitNum[0]
+      result = eval(unitNum[0])
     }
     return result
   };
   
-  /*this.getUnit = function(input) {
+  this.getUnit = function(input) {
     var result
     var validUnits = ['gal', 'l', 'lbs', 'kg', 'mi', 'km']
     //Regex to remove all non-letters and convert to lower case.
@@ -44,7 +46,7 @@ function ConvertHandler() {
     return result
   };
   
-  this.getReturnUnit = function(initUnit) {
+ this.getReturnUnit = function(initUnit) {
     var result;
     switch (initUnit) {
       case 'gal':
@@ -126,10 +128,10 @@ function ConvertHandler() {
     return result.toFixed(5);
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit, spelledUnit) {
+ this.getString = function(initNum, initUnit, returnNum, returnUnit, spelledUnit) {
     var result = initNum + ' ' + initUnit + ' converts to ' + returnNum + ' ' + spelledUnit
     return result;
-  };*/
+  };
   
 }
 
