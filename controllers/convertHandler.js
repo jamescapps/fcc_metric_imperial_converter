@@ -9,13 +9,13 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
+    //Convert input to lower case, split at letters, make sure value is a number, a decimal or division.
     var unitNum = input.toLowerCase().split(/[a-z]/)
     var divCheckInput1 = unitNum[0].split('')
-//    var inputArr = input.toLowerCase().match(/[a-z]+|[^a-z]+/gi)
-
-
-   if(unitNum[0] === "") {
+    if(unitNum[0] === "") {
       result = 1
+    } else if ((unitNum[0].split('/')).length > 2) {
+      result = "invalid number"
     } else if (isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1) {
       result = "invalid number"
     } else if (divCheckInput1[0].indexOf('/') == 0) {
@@ -23,7 +23,7 @@ function ConvertHandler() {
     } else {
       result = eval(unitNum[0])
     }
-   
+
     return result
   };
   
@@ -41,7 +41,7 @@ function ConvertHandler() {
         result = "invalid unit"
       }
     }
-    console.log(result)
+
     return result
   };
   
@@ -124,7 +124,7 @@ function ConvertHandler() {
         result = initNum / miToKm
         break
     }
-    return result.toFixed(5);
+    return Number(result.toFixed(5))
   };
   
  this.getString = function(initNum, initUnit, returnNum, returnUnit, spelledUnit) {
