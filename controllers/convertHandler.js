@@ -1,42 +1,43 @@
   class ConvertHandler {
     constructor() {
 
-      //Factor validation to a seperate method and combine the checks for "invalid number"
-
-    /*  this.validCheck = (input) => {
-        const unitNum = input.toLowerCase().split(/[a-z]/)
-        const divCheckInput1 = unitNum[0].split('')
-
-          return unitNum[0].split('/').length > 2 ? false
-          : isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1 ? false
-          : divCheckInput1[0].indexOf('/') == 0 ? false
-          : true
-      }*/
-
-     this.getNum = (input) => {
-       //Alter result to be "let result = 'grab input'.length ? 'Grap input' : 1".  Then you can say return is valid? Result : 'not valid'
-       //let result = unitNum[0].length ? unitNum[0] : 1
-       //this.validCheck() ? eval(result) : "invalid number"
-
-       //Convert input to lower case, split at letters, make sure value is a number, a decimal or division, but does not contain double fractions and no number is treated as 1.
-        let result
-        const unitNum = input.toLowerCase().split(/[a-z]/)
-        const divCheckInput1 = unitNum[0].split('')
-
-        if(unitNum[0] === "") {
-          result = 1
-        } else if ((unitNum[0].split('/')).length > 2) {
-          result = "invalid number"
-        } else if (isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1) {
-          result = "invalid number"
-        } else if (divCheckInput1[0].indexOf('/') == 0) {
-          result = "invalid number"
-        } else {
-          result = eval(unitNum[0])
+     /*this.validCheck = (unitNum) => {
+          const divCheckInput1 = unitNum[0].split('')
+            return unitNum[0].split('/').length > 2 ? false
+              : isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1 ? false
+              : divCheckInput1[0].indexOf('/') == 0 ? false
+              : true
         }
 
-        return result
-     }
+      this.getNum = (unitNum, validCheck) => {
+        let result = unitNum[0].length > 0 ? unitNum[0] : 1
+        return validCheck ? result : 'invalid number'
+     }*/
+
+     this.getNum = (input) => {
+      //Alter result to be "let result = 'grab input'.length ? 'Grap input' : 1".  Then you can say return is valid? Result : 'not valid'
+      //let result = unitNum[0].length ? unitNum[0] : 1
+      //this.validCheck() ? eval(result) : "invalid number"
+
+      //Convert input to lower case, split at letters, make sure value is a number, a decimal or division, but does not contain double fractions and no number is treated as 1.
+       let result
+       const unitNum = input.toLowerCase().split(/[a-z]/)
+       const divCheckInput1 = unitNum[0].split('')
+
+       if(unitNum[0] === "") {
+         result = 1
+       } else if ((unitNum[0].split('/')).length > 2) {
+         result = "invalid number"
+       } else if (isNaN(unitNum[0]) && unitNum[0] != "." && unitNum[0].indexOf('/') == -1) {
+         result = "invalid number"
+       } else if (divCheckInput1[0].indexOf('/') == 0) {
+         result = "invalid number"
+       } else {
+         result = eval(unitNum[0])
+       }
+
+       return result
+    }
       
       this.getUnit = (input) => {
         let result

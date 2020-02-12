@@ -10,8 +10,9 @@ module.exports = function (app) {
   app.route('/api/convert')
      .get((req, res) => {
         const input = req.query.input
-        //const validCheck = convertHandler.validCheck(input)
-        const initNum = convertHandler.getNum(input)
+        const unitNum = input.toLowerCase().split(/[a-z]/)
+        //const validCheck = convertHandler.validCheck(input, unitNum)
+        const initNum = convertHandler.getNum(input)//unitNum, validCheck)
         const initUnit = convertHandler.getUnit(input)
           if (initNum == 'invalid number'&& initUnit !== 'invalid unit') {
             return res.json(initNum)
@@ -24,7 +25,7 @@ module.exports = function (app) {
         const spelledUnit = convertHandler.spellOutUnit(returnUnit)
         const returnNum = convertHandler.convert(initNum, initUnit)
         const toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit, spelledUnit)
-          
-       res.json({initNum: initNum, initUnit: initUnit, returnNum: returnNum, returnUnit: returnUnit, string: toString})
-    })   
+
+        res.json({initNum: initNum, initUnit: initUnit, returnNum: returnNum, returnUnit: returnUnit, string: toString})
+      })   
 }
